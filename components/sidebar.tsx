@@ -7,6 +7,7 @@ import {BiSearch} from 'react-icons/bi'
 
 import Box from './box';
 import SidebarItem from './sidebaritem';
+import Library from './library';
 
 interface SidebarProps{
     children:React.ReactNode
@@ -37,17 +38,20 @@ const routes=useMemo(()=>[
     return(
         <div className='flex h-full'>
             <div className='hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2'>
-                <Box>
-                    {routes.map((info)=>(
-                        <SidebarItem key={info.label}{...info}/>
-                    ))}
-                </Box>
-
-                <Box classname='overflow-y-auto h-full'>
-                    Your library
-                </Box>
-
+            <Box>
+          <div className="flex flex-col gap-y-4 px-5 py-4">
+            {routes.map((item) => (
+              <SidebarItem key={item.label} {...item} />
+            ))}
+          </div>
+        </Box>
+        <Box className="overflow-y-auto h-full">
+          <Library />
+        </Box>
             </div>
+            <main className='h-full overflow-y-auto py-2 flex-1'>
+                {children}
+            </main>
         </div>
     )
 }
