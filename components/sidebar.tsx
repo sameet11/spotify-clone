@@ -9,6 +9,8 @@ import Box from './box';
 import SidebarItem from './sidebaritem';
 import Library from './library';
 import { Song } from '@/types';
+import { twMerge } from 'tailwind-merge';
+import usePlayer from '@/hooks/usePlayer';
 
 interface SidebarProps{
     children:React.ReactNode;
@@ -38,8 +40,12 @@ const routes=useMemo(()=>[
     }
 ],[pathname])
 
+const Player=usePlayer();
+
     return(
-        <div className='flex h-full'>
+        <div className={twMerge(`
+        h-full
+        flex`,Player.activeid && "h-[calc(100%-80px)]")}>
             <div className='hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2'>
             <Box>
           <div className="flex flex-col gap-y-4 px-5 py-4">

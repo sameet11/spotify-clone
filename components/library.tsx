@@ -11,6 +11,8 @@ import useUploadModal from '@/hooks/useUploadModel';
 import { Song } from '@/types';
 
 import MediaItem from './MediaItem';
+import useOnPlay from '@/hooks/useOnPlay';
+import { on } from 'events';
 
 interface LibraryProps{
     songs:Song[];
@@ -31,6 +33,8 @@ const Library:React.FC<LibraryProps>=({
 
         UploadModal.onOpen();
     }
+
+    const onplay=useOnPlay(songs);
     return(
         <div className="flex flex-col">
             <div className="flex items-center justify-between px-5 pt-4">
@@ -44,7 +48,7 @@ const Library:React.FC<LibraryProps>=({
                 {songs.map((song)=>{
                     return(
                         <MediaItem 
-                        onClick={()=>{}}
+                        onClick={(id:string)=>{onplay(id)}}
                         key={song.id}
                         data={song}/>
                     )

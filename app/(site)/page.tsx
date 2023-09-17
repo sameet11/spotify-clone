@@ -23,7 +23,7 @@ export default  async function Home() {
           2xl-grid-cols-4
           gap-3
           mt-4">
-            <ListItem image="/images/liked.png" name="Liked Songs" href="liked"/>
+            <ListItem image="/images/liked.png" name="Liked Songs" href="Liked"/>
           </div>
         </div>
       </Header>

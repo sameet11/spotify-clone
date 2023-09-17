@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter } from "next/navigation";
 import {FaPlay} from "react-icons/fa"
 
 import Image from "next/image";
@@ -14,14 +16,14 @@ const ListItem:React.FC<ListItemProps>=({
     name,
     href
 })=>{
+
+    const router=useRouter();
+
+    const onclick=()=>{
+        router.push(href)
+    }
     return(
-
-        //const router=useRouter();
-
-        //const onclick=()=>{
-            //router.push(href)
-        //}
-        <button className="relative group flex items-center rounded-md overflow-hidden gap-x-4 bg-neutral-100/10 hover:bg-neutral-100/20 transition pr-4">
+        <button onClick={onclick} className="relative group flex items-center rounded-md overflow-hidden gap-x-4 bg-neutral-100/10 hover:bg-neutral-100/20 transition pr-4">
             <div className="relative min-h-[64px] min-w-[64px]">
                 <Image className="object-cover" fill src={image} alt="image" />
             </div>
